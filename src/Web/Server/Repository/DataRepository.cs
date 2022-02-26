@@ -4,21 +4,28 @@ namespace Web.Server.Repository
 {
 	public class DataRepository : IDataRepository
 	{
-		public DataRepository()
+		private readonly IWebHostEnvironment environment;
+
+		public DataRepository(IWebHostEnvironment environment)
 		{
+			this.environment = environment ?? throw new ArgumentNullException(nameof(environment));
 		}
 
 		public async IAsyncEnumerable<Resource> GetResources(string name)
 		{
-			for (var i = 0; i < 4; i++)
-			{
-				yield return new Resource
-				{
-					Order = i + 1,
-					Title = $"resouce_{i}",
-					Info = $"This is resource: {i}" 
-				};
-			}
-		}
+            var homePageResources = Path.Combine(this.environment.WebRootPath, "Resources", name);
+            foreach (var file in Directory.GetFiles(homePageResources, "*.MD"))
+            {
+                var title = Path.GetFileNameWithoutExtension(file);
+                var orderInfo = title.Split('_').First();
+                title = title.Substring(orderInfo.Length + 1);
+                yield return new Resource
+                {
+                    Order = System.Convert.ToInt32(orderInfo),
+                    Title = title,
+                    Info = await File.ReadAllTextAsync(file)
+                };
+            }
+        }
 	}
 }

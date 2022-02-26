@@ -9,21 +9,19 @@
 }
 else
 {
-	@foreach (var resource in resources.OrderBy(r => r.Order))
-	{
-		<MatAccordion Multi="true">
-			@foreach (var resource in resources.OrderBy(r => r.Order))
-			{
-				<MatExpansionPanel>
-					<MatExpansionPanelSummary>
-						<MatExpansionPanelHeader>@resource.Title</MatExpansionPanelHeader>
-					</MatExpansionPanelSummary>
-					<MatExpansionPanelDetails>
-					</MatExpansionPanelDetails>
-				</MatExpansionPanel>
-			}
-		</MatAccordion>
-	}
+	<MatAccordion Multi="true">
+		@foreach (var resource in resources.OrderBy(r => r.Order))
+		{
+			<MatExpansionPanel>
+				<MatExpansionPanelSummary>
+					<MatExpansionPanelHeader>@resource.Title</MatExpansionPanelHeader>
+				</MatExpansionPanelSummary>
+				<MatExpansionPanelDetails>
+					<p>@((MarkupString) @resource.InfoAsMarkdown)</p>
+				</MatExpansionPanelDetails>
+			</MatExpansionPanel>
+		}
+	</MatAccordion>
 }
 @code {
 	[Parameter]

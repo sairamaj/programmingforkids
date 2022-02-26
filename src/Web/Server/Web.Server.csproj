@@ -15,5 +15,9 @@
     <ProjectReference Include="..\Shared\Web.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Resources\Python\" />
+  </ItemGroup>
+
 
 </Project>
