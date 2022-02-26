@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Resources\Python\" />
+    <Folder Include="wwwroot\Resources\Git\" />
   </ItemGroup>
 
 

@@ -1,8 +1,8 @@
-﻿@page "/language"
+﻿@page "/git"
 @using Web.Shared.Model
 @inject HttpClient Http
 
-<PageTitle>Python</PageTitle>
+<PageTitle>@Name</PageTitle>
 @if (resources == null)
 {
 	<p><em>Loading...</em></p>
@@ -25,12 +25,13 @@ else
 }
 @code {
 	[Parameter]
-	public string ResourceName { get; set; }
+	public string Name { get; set; }
 	IEnumerable<Resource> resources;
 
+	
 	protected override async Task OnInitializedAsync()
 	{
-		ResourceName = "Python"; // this should come as paramter.
-		resources = await Http.GetFromJsonAsync<IEnumerable<Resource>>($"home/resources/{ResourceName}");
+		Name = "Git";
+		resources = await Http.GetFromJsonAsync<IEnumerable<Resource>>($"home/resources/{Name}");
 	}
 }

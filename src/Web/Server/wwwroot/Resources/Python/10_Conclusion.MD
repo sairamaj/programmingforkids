@@ -1,4 +1,3 @@
-#### Things learned today
 * __Fixing the disk disappear issue__
     * When we move a disk from tower to another tower and if the other tower raises exception becuase it cannot allow the disk (because big disk going on to small disk), the disk is disappearing
     * The reason is our move is removing the disk from Tower and then adding this disk to another tower

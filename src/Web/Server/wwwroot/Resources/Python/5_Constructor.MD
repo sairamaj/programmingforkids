@@ -12,7 +12,7 @@
             def draw(self):
                 self.drawPole()
     ```
-    ![self](../../images/self.PNG)
+    ![self](https://github.com/sairamaj/learnforcause/raw/master/src/web/SelfService/Server/wwwroot/images/self.png)
 
 * Constructor in Py 
     * Constructors are used to create object and set object properties while creating itself.

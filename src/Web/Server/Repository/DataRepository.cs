@@ -18,7 +18,7 @@ namespace Web.Server.Repository
             {
                 var title = Path.GetFileNameWithoutExtension(file);
                 var orderInfo = title.Split('_').First();
-                title = title.Substring(orderInfo.Length + 1);
+                title = title.Substring(orderInfo.Length + 1).Replace('_',' ');
                 yield return new Resource
                 {
                     Order = System.Convert.ToInt32(orderInfo),

@@ -1,0 +1,42 @@
+﻿@page "/Python"
+@using Web.Shared.Model
+@inject HttpClient Http
+
+<PageTitle>@Name</PageTitle>
+
+<b>Basic introduction for Python. </b><br/> <a href="https://www.mathsisfun.com/games/towerofhanoi.html"> Play Tower of Hanoi here</a>. After basic introduction, we will develop a command version tower of hanoi game step by step in below sections.
+<br/>
+
+<hr />
+
+@if (resources == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<MatAccordion Multi="true">
+		@foreach (var resource in resources.OrderBy(r => r.Order))
+		{
+			<MatExpansionPanel>
+				<MatExpansionPanelSummary>
+					<MatExpansionPanelHeader>@resource.Title</MatExpansionPanelHeader>
+				</MatExpansionPanelSummary>
+				<MatExpansionPanelDetails>
+					<p>@((MarkupString) @resource.InfoAsMarkdown)</p>
+				</MatExpansionPanelDetails>
+			</MatExpansionPanel>
+		}
+	</MatAccordion>
+}
+@code {
+	[Parameter]
+	public string Name { get; set; }
+	IEnumerable<Resource> resources;
+
+	protected override async Task OnInitializedAsync()
+	{
+		Name = "Python";
+		resources = await Http.GetFromJsonAsync<IEnumerable<Resource>>($"home/resources/{Name}");
+	}
+}

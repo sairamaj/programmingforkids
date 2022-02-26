@@ -1,4 +1,3 @@
-#### Things learned today
 * __Moving disks from towers__
     * Lets introduce __move__ method in __Gamer__ to move disks
     * Moving is nothing but removing a disk from a tower and adding the same disk to another tower.

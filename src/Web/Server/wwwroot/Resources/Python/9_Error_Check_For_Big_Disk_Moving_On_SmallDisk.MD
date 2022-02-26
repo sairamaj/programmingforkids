@@ -1,4 +1,3 @@
-#### Things learned today
 * __Consuming other python packages__
     * There are lot of python packages available on the internet which does lot of cool things. 
     * We need to know how to get those in to our programs.
@@ -58,8 +57,7 @@
     ```
     * We will see the tower with colors like below
 
-        ![toh](../../images/toh_with_color.PNG)
-
+        ![toh](https://raw.githubusercontent.com/sairamaj/learnforcause/master/src/web/SelfService/Server/wwwroot/images/toh_with_color.PNG)
 
 * __Error checking while moving big disk in to small disk__
     * Currently our program allowing big disk on to small disk which is against the rule of game.

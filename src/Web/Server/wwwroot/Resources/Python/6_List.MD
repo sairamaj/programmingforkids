@@ -1,4 +1,3 @@
-#### Things learned today
 * Multiple Files
     * So far we have been using single python file and we will be splitting the classes in to invidiual files
     *  Move __Disk__ into disk.py file

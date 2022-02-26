@@ -1,4 +1,3 @@
-#### Things learned today
 * Today we started initial version Tower of honai 
     * Created method 
     ```python
