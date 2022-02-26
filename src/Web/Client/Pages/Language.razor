@@ -1,0 +1,38 @@
+﻿@page "/language"
+@using Web.Shared.Model
+@inject HttpClient Http
+
+<PageTitle>Python</PageTitle>
+@if (resources == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	@foreach (var resource in resources.OrderBy(r => r.Order))
+	{
+		<MatAccordion Multi="true">
+			@foreach (var resource in resources.OrderBy(r => r.Order))
+			{
+				<MatExpansionPanel>
+					<MatExpansionPanelSummary>
+						<MatExpansionPanelHeader>@resource.Title</MatExpansionPanelHeader>
+					</MatExpansionPanelSummary>
+					<MatExpansionPanelDetails>
+					</MatExpansionPanelDetails>
+				</MatExpansionPanel>
+			}
+		</MatAccordion>
+	}
+}
+@code {
+	[Parameter]
+	public string ResourceName { get; set; }
+	IEnumerable<Resource> resources;
+
+	protected override async Task OnInitializedAsync()
+	{
+		ResourceName = "Python"; // this should come as paramter.
+		resources = await Http.GetFromJsonAsync<IEnumerable<Resource>>($"home/resources/{ResourceName}");
+	}
+}
