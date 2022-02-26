@@ -23,16 +23,16 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build ${{env.DOTNET_ROOT}}/src/Web/Web.sln --configuration Release
+        run: dotnet build src/Web/Web.sln --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish ${{env.DOTNET_ROOT}}/src/Web/Web.sln -c Release -o ${{env.DOTNET_ROOT}}/src/Web
+        run: dotnet publish src/Web/Web.sln -c Release -o ${{env.DOTNET_ROOT}}/my-app
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/src/Web
+          path: ${{env.DOTNET_ROOT}}/my-app
 
   deploy:
     runs-on: ubuntu-latest
